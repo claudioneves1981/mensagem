@@ -7,7 +7,9 @@ public class Main {
     public static void main(String[] args) {
 
         Mensagem mensagem;
-        
+
+        int option;
+
         do {
             System.out.println("Escolha o metodo para envio da mensagem");
             System.out.println("1 -SMS");
@@ -15,27 +17,33 @@ public class Main {
             System.out.println("3 - Redes Sociais");
             System.out.println("4 - WhatsApp");
             System.out.println("5 - Sair do Programa");
-            int option = scanner.nextInt();
-            
-            if (option == 1)
-                mensagem = enviarSMS(escreveMensagem());
-            else if (option == 2)
-                mensagem = enviarEmail(escreveMensagem());
-            else if (option == 3)
-                mensagem = enviarRedesSociais(escreveMensagem());
-            else if (option == 4)
-                mensagem = enviarWhatsApp(escreveMensagem());
-            else if (option == 5) {
-                break;
-            }else {
-                System.out.println("Opção Invalida");
-                continue;
+            option = scanner.nextInt();
+
+            switch(option) {
+
+                case 1:
+                    mensagem = enviarSMS(escreveMensagem());
+                    break;
+                case 2:
+                    mensagem = enviarEmail(escreveMensagem());
+                    break;
+                case 3:
+                    mensagem = enviarRedesSociais(escreveMensagem());
+                    break;
+                case 4:
+                    mensagem = enviarWhatsApp(escreveMensagem());
+                    break;
+                case 5:
+                    continue;
+                default:
+                    System.out.println("Opção Invalida");
+                    continue;
             }
 
             System.out.println("A mensagem enviada foi -> " + mensagem.getMensagem() + " <- por " + mensagem.getClass().getCanonicalName());
 
 
-        }while(true);
+        }while(option != 5);
 
 
     }
